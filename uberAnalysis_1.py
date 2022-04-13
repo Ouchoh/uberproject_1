@@ -23,6 +23,9 @@ uber_1718 = uber_17.append(uber_18)
 
 uber_1718.to_csv(r"D:\python\pycharm\uber_1738.csv" , index = True)
 
+#Changing paths in the files
+
+
 import csv
 
 test = pd.read_csv(r"D:\python\pycharm\uber_1738.csv" )
