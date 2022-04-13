@@ -3,15 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
-import statsmodels
 
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
 
 #Reading the csv file from my local disc D
-uber_17 = pd.read_csv('uber_2017.csv')
+uber_17 = pd.read_csv(r'D:\python\pycharm\uberAnalysis\Data\uber_2017.csv')
 uber_17
 
 import pandas as pd
-uber_18 = pd.read_csv(r"D:\python\pycharm\UBER_2018_1.csv")
+uber_18 = pd.read_csv(r"D:\python\pycharm\uberAnalysis\Data\UBER_2018_1.csv")
 uber_18
 
 #using to_strings to read the whole dataframe in the console
@@ -144,13 +145,13 @@ year2017 = uber_1718_groupedMcopy[pd.to_datetime((uber_1718_groupedMcopy['Reques
 year2018 = uber_1718_groupedMcopy[pd.to_datetime((uber_1718_groupedMcopy['Request Date (Local)'])).dt.year == 2018]
 a19 = year2017['Request Date (Local)']
 b19 = year2017['Total Charge in KES']
-plt.barh(a19,b19, color = 'yellow')
-#plt.xticks(a19, rotation = 90)
+plt.bar(a19,b19, color = 'yellow')
+plt.xticks( rotation = 90)
 
 c19 = year2018['Request Date (Local)']
 d19 = year2018['Total Charge in KES']
-plt.barh(c19,d19, color = 'Green')
-#plt.xticks(c19, rotation = 90)
+plt.bar(c19,d19, color = 'Green')
+plt.xticks(rotation = 90)
 
 plt.xlabel('Total Charge in KES')
 plt.ylabel('Months')
@@ -209,6 +210,13 @@ plt.xticks(x, rotation=90)
 plt.xlabel('Months')
 plt.ylabel('Distance (mi)')
 plt.title('Milage covered per month')
+plt.show()
+
+#a line graph of miles coveres vs Monthly period to provide a visual presentation of didtance trends
+plt.plot(c,d,linestyle = 'dotted')
+plt.xlabel('Months')
+plt.ylabel('Distance (mi)')
+plt.title('Miles Covered per Month')
 plt.show()
 
 #Histogram - x axis (hours) y - number of trips...line 243
@@ -449,6 +457,21 @@ y = a +bx+cy
 
 my_list5 = uber_1718_news11.columns.values.tolist()
 print(my_list5)
+
+uber1718regression = uber_1718_news11[['Total Charge in KES','Distance (mi)']]
+
+#defining the variable
+xr= uber1718regression['Distance (mi)'].tolist()
+yr = uber1718regression['Total Charge in KES'].tolist()
+
+#adding the constant term
+xr = sm.add_constant(xr)
+
+#performing the regression and #fitting the model
+result = sm.OLS(yr,xr).fit()
+
+#printing the summary table
+print(result.summary())
 
 
 
