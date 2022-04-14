@@ -21,7 +21,7 @@ print(uber_18.to_string())
 #Mearging my two dataframes into one csv file -uber_1718
 uber_1718 = uber_17.append(uber_18)
 
-uber_1718.to_csv(r"D:\python\pycharm\uber_1738.csv" , index = True)
+uber_1718.to_csv(r"D:\python\pycharm\uberAnalysis\Data\uber_1738.csv" , index = True)
 
 #Changing paths in the files
 
@@ -88,7 +88,7 @@ uber_1718_new4.isnull().sum()
 
 uber_1718_new4.to_csv(r'D:\python\pycharm\uber_1718_new4.csv' , index = True)
 
-uber_1718_news5 = pd.read_csv(r'D:\python\pycharm\uber_1718_new4.csv')
+uber_1718_news5 = pd.read_csv(r'D:\python\pycharm\uberAnalysis\Data\uber_1718_new4.csv')
 uber_1718_news5.isnull().sum()
 uber_1718_news5['Expense Code'].unique()
 
@@ -156,8 +156,8 @@ d19 = year2018['Total Charge in KES']
 plt.bar(c19,d19, color = 'Green')
 plt.xticks(rotation = 90)
 
-plt.xlabel('Total Charge in KES')
-plt.ylabel('Months')
+plt.xlabel('Months')
+plt.ylabel('Total charges (KES)')
 plt.title('Total charges per Month')
 plt.show()
 
@@ -228,7 +228,7 @@ uber_1718_news5['No of trips'] = '1'
 print(uber_1718_news5.to_string())
 my_list1 = uber_1718_news5.columns.values.tolist()
 print(my_list1)
-uber_1718_news5.to_csv(r"D:\python\pycharm\uber_1718_newsT2.csv", index=True)
+uber_1718_news5.to_csv(r"D:\python\pycharm\uberAnalysis\Data\uber_1718_newsT2.csv", index=True)
 
 
 
@@ -285,7 +285,7 @@ uber_1718_news7 = uber_1718_news5
 uber_1718_news6["Expense Code"].unique()'''
 
 
-uber_1718_news10 = pd.read_csv(r"D:\python\pycharm\uber_1718_news81.csv")
+uber_1718_news10 = pd.read_csv(r"D:\python\pycharm\uberAnalysis\Data\uber_1718_news81.csv")
 
 df = uber_1718_news10.replace(dict.fromkeys(['client support','support','Support'] , 'SUPPORT'))
 df["Expense Code"].unique()
@@ -353,7 +353,7 @@ my_list8 = uber_1718_news11.columns.values.tolist()
 print(my_list8)
 uber_1718_news11['FirstandSecondname'] = uber_1718_news11['First Name'] + ' ' + uber_1718_news11['Last Name']
 
-dept_allocation1 = pd.read_csv(r'D:\python\pycharm\EmployeeNames.csv')
+dept_allocation1 = pd.read_csv(r'D:\python\pycharm\uberAnalysis\Data\EmployeeNames.csv')
 
 
 #extract employee names from dept_allocation1
@@ -461,6 +461,7 @@ y = a +bx+cy
 my_list5 = uber_1718_news11.columns.values.tolist()
 print(my_list5)
 
+#regression model
 uber1718regression = uber_1718_news11[['Total Charge in KES','Distance (mi)']]
 
 #defining the variable
