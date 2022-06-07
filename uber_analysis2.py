@@ -211,6 +211,8 @@ MeanPrice2021 = FilteredDates2021Bills['Transaction amount in KES (incl. taxes)'
 MeanPrice2022 = bills2022['Transaction amount in KES (incl. taxes)'].sum()
 
 #Total expediture per department
+DepartmentExpenditure2021Filtered = FilteredDates2021Bills.groupby('Departments').sum()
+DepartmentExpenditure2022 = bills2022.groupby('Departments').sum()
 
 
 
